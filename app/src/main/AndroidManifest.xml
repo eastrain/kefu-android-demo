@@ -3,12 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.easemob.helpdeskdemo">
 
-  <uses-feature android:name="android.hardware.camera"/>
-  <uses-feature android:name="android.hardware.camera.autofocus"/>
-  <uses-feature
-      android:glEsVersion="0x00020000"
-      android:required="true"/>
-
   <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
   <!-- 这个权限用于进行网络定位 -->
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
@@ -176,24 +170,8 @@
         android:theme="@style/horizontal_slide">
     </activity>
 
-    <activity
-        android:name="com.easemob.kefu_remote.conference.ConferenceActivity"
-        android:launchMode="singleTask"
-        android:screenOrientation="portrait"
-        android:theme="@style/horizontal_slide"
-        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
 
-    <service android:name="com.easemob.kefu_remote.conference.SRService"/>
-
-    <!--核心进程-->
-    <service
-        android:name="com.easemob.kefu_remote.CoreService"
-        android:enabled="true"
-        android:exported="false"/>
-    <service
-        android:name="com.easemob.kefu_remote.CoreService$CoreInnerService"
-        android:enabled="true"
-        android:exported="false"/>
+    <service android:name="com.easemob.kefu_remote.SRService"/>
 
     <!-- 百度地图所需的service -->
     <service
@@ -205,22 +183,6 @@
         android:name="com.baidu.lbsapi.API_KEY"
         android:value="3ecea51f560650b1ed8a4b99808f52e8"/>
 
-
-    <!-- gcm start -->
-    <receiver
-        android:name="com.hyphenate.chat.EMGCMBroadcastReceiver"
-        android:exported="true"
-        android:permission="com.google.android.c2dm.permission.SEND">
-      <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
-
-        <category android:name="com.hyphenate.chatuidemo"/>
-      </intent-filter>
-    </receiver>
-
-    <service
-        android:name="com.hyphenate.chat.EMGCMListenerService"
-        android:exported="false"/>
 
     <receiver
         android:name=".receiver.GCMPushBroadCast"
@@ -274,11 +236,6 @@
       </intent-filter>
     </service>
     <!-- FCM required end -->
-    <service android:name="com.easemob.kefu_remote.SRService">
-      <intent-filter android:priority="1000">
-        <action android:name="com.dbjtech.myservice" />
-      </intent-filter>
-    </service>
 
     <!--华为 HMS Config-->
     <!-- 接入HMSSDK 需要注册的appid参数。value的值中“100257243”用实际申请的appid替换，来源于开发者联盟网站应用的权益详情。格式 android:value="appid=xxxxxx"-->
