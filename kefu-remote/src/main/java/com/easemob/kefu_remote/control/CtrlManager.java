@@ -285,7 +285,7 @@ public class CtrlManager {
      */
     public void agreeRequestCtrl() {
         startCtrlMode();
-        //startDrawMode();
+        //stgiartDrawMode();
         sendCtrlMsg(remoteMemberId, objectId, "", true);
     }
 
